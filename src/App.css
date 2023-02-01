@@ -22,6 +22,34 @@
 	align-self: flex-start;
 }
 
+.name-button {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.shiny-button {
+	border: none;
+	outline: none;
+	background: none;
+	margin: 0;
+	padding: 0;
+}
+
+.shiny-icon {
+	width: 30px;
+}
+.not-shiny {
+	opacity: 0.6;
+}
+
+.shiny {
+	opacity: 1;
+}
+
 .card-header {
 	display: flex;
 	justify-content: space-between;

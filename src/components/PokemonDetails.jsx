@@ -6,21 +6,54 @@ import {
 	Row,
 	OverlayTrigger,
 	Tooltip,
+	Button,
 } from "react-bootstrap";
 import Stats from "./Stats";
 const PokemonDetails = (props) => {
+	const [displayShiny, setDisplayShiny] = React.useState(false);
 	return (
 		<Container className="mt-2">
 			<Row>
 				<Col xs={10} md={6}>
 					<Card>
 						<Card.Header className="card-header">
-							<h4 className="pokemon-name capitalized">{props.pokemon.name}</h4>
+							<div className="name-button">
+								<h4 className="pokemon-name capitalized">
+									{props.pokemon.name}
+								</h4>
+								<OverlayTrigger
+									key="trigger-shiny"
+									placement="bottom"
+									overlay={
+										<Tooltip id="tooltip-shiny">
+											{displayShiny ? "Show default form" : "Show shiny form"}
+										</Tooltip>
+									}
+								>
+									<Button
+										variant="light"
+										className="shiny-button"
+										onClick={() => setDisplayShiny(!displayShiny)}
+									>
+										<img
+											src="shinyicon.png"
+											alt="Show shiny form"
+											className={`shiny-icon ${
+												!displayShiny ? "not-shiny" : "shiny"
+											}`}
+										></img>
+									</Button>
+								</OverlayTrigger>
+							</div>
+
 							<div className="images">
 								<img
 									src={
-										props.pokemon.sprites.other["official-artwork"]
-											.front_default
+										displayShiny
+											? props.pokemon.sprites.other["official-artwork"]
+													.front_shiny
+											: props.pokemon.sprites.other["official-artwork"]
+													.front_default
 									}
 									alt={props.pokemon.name}
 									width="175px"

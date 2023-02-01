@@ -3,16 +3,18 @@ const SEARCH_TERMS = {
 	pokemon: "pokemon",
 };
 
-async function fetchPokemon(pokemonName) {
+async function fetchPokemon(pokemon) {
 	try {
 		const response = await fetch(
-			`${BASE_URL}/${SEARCH_TERMS.pokemon}/${pokemonName}`,
+			`${BASE_URL}/${SEARCH_TERMS.pokemon}/${pokemon.toLowerCase()}`,
 		);
 		const data = await response.json();
-		return data;
+		return { pokemonData: data, hasError: false };
 	} catch (error) {
-		console.error(error);
+		return { pokemonData: null, hasError: true };
 	}
 }
 
-export { fetchPokemon };
+async function fetchEvolutionaryLine(pokemonId) {}
+
+export { fetchPokemon, fetchEvolutionaryLine };
