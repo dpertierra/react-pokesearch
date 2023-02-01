@@ -14,7 +14,4 @@ async function fetchPokemon(pokemon) {
 		return { pokemonData: null, hasError: true };
 	}
 }
-
-async function fetchEvolutionaryLine(pokemonId) {}
-
-export { fetchPokemon, fetchEvolutionaryLine };
+export { fetchPokemon };
